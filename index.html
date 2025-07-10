@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Décoration d’intérieur moderne et élégante – Wassy ND-design</title>
+    <meta name="description" content="Transformez votre intérieur avec style ! Wassy ND-design vous accompagne dans vos projets de décoration d’intérieur moderne, élégante et personnalisée.">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+    
+    
+    /* Style pour le slider avec transition d'image */
+    .hero {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        transition: background-image 1s ease;
+    }
+    
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Overlay foncé pour améliorer la lisibilité du texte */
+        z-index: 1;
+    }
+    
+    .slider {
+        position: relative;
+        z-index: 2;
+        transition: opacity 0.3s ease;
+    }
+    
+    .slide-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 3;
+    }
+    
+    /* Nouveau style pour l'image et le texte dans la section "À PROPOS DE NOUS" */
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 30px 0;
+    }
+    
+    .about-image {
+        text-align: center;
+        margin-bottom: 20px;
+        max-width: 100%;
+    }
+    
+    .about-image img {
+        max-width: 90%;
+        height: auto;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    .about-text {
+        width: 90%;
+        padding: 20px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        background-color: #fff;
+        margin: 0 auto;
+        text-align: justify;
+    }
+    
+    .about-text p {
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+    
+    @media (min-width: 768px) {
+        .about-content {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .about-image {
+            width: 45%;
+            margin-bottom: 0;
+            margin-right: 5%;
+        }
+        
+        .about-text {
+            width: 45%;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .mobile-toggle {
+            display: block;
+        }
+        
+        .menu {
+            display: none;
+        }
+        
+        .menu.active {
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            z-index: 1000;
+        }
+        
+        .dropdown-toggle {
+            float: right;
+            cursor: pointer;
+        }
+        
+        .submenu {
+            display: none;
+        }
+        
+        .show-submenu .submenu {
+            display: block;
+        }
+    }
+</style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-contact">
+                <span><i class="far fa-envelope"></i> wassydeco@gmail.com</span>
+                <span><i class="fas fa-phone"></i> +242 06 567 09 56</span>
+            </div>
+            <div class="top-bar-social">
+               <a href="#"><i class="fab fa-facebook-f"></i></a>
+               <a href="#"><i class="fab fa-twitter"></i></a>
+               <a href="#"><i class="fab fa-google-plus-g"></i></a>  
+               <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="main-nav">
+            <div class="logo-container">
+                <h1>WASSY</h1>
+                <p>ND Design d'Intérieur</p>
+            </div>
+            <div class="mobile-toggle">☰</div>
+            <ul class="menu">
+                <li><a href="index.html">Accueil</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projets</a></li>
+                    <li><a href="galery.html">Galerie</a></li>
+                    <li><a href="equipe.html">Notre Équipe</a></li>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+  <div class="hero">
+    <div class="slider">
+      <h2>LE TRAVAILLE EST LA SOLUTION POUR UN RESULTAT PARFAIT </h2>
+      <p>Ce site est un site de décoration d'interieur </p>
+      <a href="#about" class="btn">EN SAVOIR PLUS</a>
+    </div>
+    <button class="slide-btn prev">&#10094;</button>
+    <button class="slide-btn next">&#10095;</button>
+  </div>
+
+    <!-- About Page Content avec nouvelle structure -->
+<div id="about" class="page-section container">
+    <h2 class="page-title">À propos de Wassy ND-design – Expert en décoration d’intérieur</h2>
+    <div class="about-content">
+        <div class="about-image">
+            <img src="images/salon-decoration-interieur-retro.png" alt="Salon de décoration d’intérieur rétro avec design élégant et mobilier vintage" loading="lazy">
+        </div>
+        <div class="about-text">
+            <p>Fondée en 2010, <span style="color: rgb(56, 38, 16); font-weight: bold;">WASSY - ND Design </span> s'est imposée comme une référence dans le domaine de la décoration d'intérieur. Notre mission est de créer des espaces qui inspirent et embellissent la vie quotidienne de nos clients.</p>
+            <p>Wassy ND-design vous accompagne dans vos projets de décoration d’intérieur, qu’il s’agisse d’un espace moderne ou traditionnel. Spécialistes de la décoration d’intérieur maison, nous créons des ambiances uniques, chaleureuses et fonctionnelles. Chaque pièce est pensée pour refléter votre style et améliorer votre confort au quotidien. Nous proposons également des solutions sur mesure en design d’intérieur appartement, alliant esthétique et praticité. Grâce à notre savoir-faire, transformez votre intérieur en un lieu qui vous ressemble. Faites de votre espace un véritable havre de paix avec notre expertise..</p>
+            <p>Notre équipe est composée de designers passionnés qui allient créativité et expertise technique pour transformer vos idées en réalité. Chaque projet est abordé avec une attention particulière aux détails et une approche personnalisée.</p>
+            <p>Au fil des années, nous avons eu le privilège de travailler sur divers projets, des résidences privées aux espaces commerciaux, en passant par des hôtels et des restaurants. Cette diversité d'expérience nous permet d'apporter une perspective riche et innovante à chaque nouveau défi.</p>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h3>À PROPOS DE NOUS</h3>
+                <p>Notre entreprise de design d'intérieur s'engage à créer des espaces qui inspirent. Avec une équipe de professionnels passionnés, nous transformons vos rêves en réalité.</p>
+                <p>Chaque projet est une nouvelle aventure où nous combinons créativité, fonctionnalité et élégance pour créer des intérieurs qui vous ressemblent.</p>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>DERNIERS ARTICLES</h3>
+                <div class="latest-post">
+                    <h4>Les tendances déco de 2025</h4>
+                    <p>Découvrez les nouvelles tendances qui façonnent...</p>
+                </div>
+                <div class="latest-post">
+                    <h4>Comment optimiser les petits espaces</h4>
+                    <p>Astuces et conseils pour tirer le meilleur parti...</p>
+                </div>
+            </div>
+           
+            <div class="footer-widget">
+                <h3>CONTACTEZ-NOUS</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 📍 11 RUE DE LA GLOIRE, BRAZZAVILLE</p>
+                <p><i class="fas fa-phone"></i> 📞 +242 06 567 09 56</p>
+                <p><i class="far fa-envelope"></i> ✉ wassydeco@gmail.com</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>MENU PIED DE PAGE</h3>
+                <ul class="footer-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projets</a></li>
+                    <li><a href="galery.html">Galerie</a></li>
+                    <li><a href="equipe.html">Notre Équipe</a></li>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>Copyright © 2023. Tous droits réservés</p>
+            <p>Design par Grace Themes</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        // Création d'un tableau de slides avec images
+        const slides = [
+            {
+                title: "DESIGN D'INTÉRIEUR ÉLÉGANT",
+                text: "Transformez votre espace de vie avec nos designs contemporains et fonctionnels",
+                buttonText: "EN SAVOIR PLUS",
+                buttonLink: "#about",
+                backgroundImage: "images/salon-decoration-interieur-retro.png"
+            },
+            {
+                title: "SOLUTIONS CRÉATIVES",
+                text: "Nos designers expérimentés transforment vos espaces en lieux uniques qui reflètent votre personnalité",
+                buttonText: "NOS SERVICES",
+                buttonLink: "services.html",
+                backgroundImage: "images/maison-decoration_interieur.jpg"
+            },
+            {
+                title: "PROJETS SUR MESURE",
+                text: "Chaque espace raconte une histoire unique, découvrez comment nous pouvons créer la vôtre",
+                buttonText: "VOIR NOS PROJETS",
+                buttonLink: "project.html",
+                backgroundImage: "images/maison-decoration_interieur2.jpg"
+            }
+        ];
+
+        // Variables pour le contrôle du slider
+        let currentSlideIndex = 0;
+
+        // Fonction d'initialisation du slider
+        function initSlider() {
+            const hero = document.querySelector('.hero');
+            const slider = document.querySelector('.slider');
+            const prevBtn = document.querySelector('.slide-btn.prev');
+            const nextBtn = document.querySelector('.slide-btn.next');
+            
+            // Définir l'image de fond initiale
+            hero.style.backgroundImage = `url('${slides[0].backgroundImage}')`;
+            
+            // Afficher le premier slide
+            updateSlider();
+            
+            // Ajouter les écouteurs d'événements pour les boutons
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', function() {
+                    showPreviousSlide();
+                });
+                
+                nextBtn.addEventListener('click', function() {
+                    showNextSlide();
+                });
+            }
+            
+            // Option: Défilement automatique
+            setInterval(showNextSlide, 5000); // Change de slide toutes les 5 secondes
+        }
+
+        // Afficher le slide précédent
+        function showPreviousSlide() {
+            currentSlideIndex--;
+            if (currentSlideIndex < 0) {
+                currentSlideIndex = slides.length - 1;
+            }
+            updateSlider();
+        }
+
+        // Afficher le slide suivant
+        function showNextSlide() {
+            currentSlideIndex++;
+            if (currentSlideIndex >= slides.length) {
+                currentSlideIndex = 0;
+            }
+            updateSlider();
+        }
+
+        // Mettre à jour le contenu du slider
+        function updateSlider() {
+            const hero = document.querySelector('.hero');
+            const slider = document.querySelector('.slider');
+            const currentSlide = slides[currentSlideIndex];
+            
+            // Animation de transition
+            slider.style.opacity = '0';
+            
+            setTimeout(() => {
+                // Changer l'image de fond
+                hero.style.backgroundImage = `url('${currentSlide.backgroundImage}')`;
+                
+                // Mettre à jour le contenu
+                slider.innerHTML = `
+                    <h2>${currentSlide.title}</h2>
+                    <p>${currentSlide.text}</p>
+                    <a href="${currentSlide.buttonLink}" class="btn">${currentSlide.buttonText}</a>
+                `;
+                
+                // Revenir à l'opacité normale
+                slider.style.opacity = '1';
+            }, 300);
+        }
+
+       // Code pour initialiser tout quand le DOM est chargé
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialisation du slider
+    initSlider();
+
+    // Code pour gérer le menu mobile
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const menu = document.querySelector('.menu');
+    
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', function() {
+            menu.classList.toggle('active');
+            this.innerHTML = menu.classList.contains('active') ? '✕' : '☰';
+        });
+    }
+
+    // Gestion des sous-menus sur mobile
+    const menuItemsWithSubmenu = document.querySelectorAll('.menu > li');
+
+    menuItemsWithSubmenu.forEach(item => {
+        if (item.querySelector('.submenu')) {
+            const link = item.querySelector('a');
+            
+            if (!link.querySelector('.dropdown-toggle')) {
+                const dropdownToggle = document.createElement('span');
+                dropdownToggle.className = 'dropdown-toggle';
+                dropdownToggle.innerHTML = ' ▼';
+                link.appendChild(dropdownToggle);
+
+                dropdownToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    item.classList.toggle('show-submenu');
+                    this.innerHTML = item.classList.contains('show-submenu') ? ' ▲' : ' ▼';
+                });
+            }
+        }
+    });
+
+    // Aucun affichage conditionnel de section → on ne touche pas à display/style
+});
+
+    </script>
+</body>
+</html>

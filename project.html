@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Nos Projets - ND Design d'Intérieur</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+        
+        /* Contenu principal */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+        
+        
+        .page-subtitle {
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Filtres de projets */
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            background: none;
+            border: 2px solid #c68a1d;
+            color: #c68a1d;
+            padding: 8px 20px;
+            margin: 5px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: #c68a1d;
+            color: white;
+        }
+        
+        /* Grille de projets */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-image {
+            height: 250px;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .project-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #c68a1d;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .project-info {
+            padding: 25px;
+        }
+        
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #c68a1d;
+        }
+        
+        .project-location {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .location-icon {
+            margin-right: 5px;
+        }
+        
+        .project-description {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .project-details {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .project-detail {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .detail-value {
+            font-weight: 700;
+            color: #c68a1d;
+            font-size: 1.1rem;
+        }
+        
+        .detail-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .page-btn:hover, .page-btn.active {
+            background-color: #c68a1d;
+            color: white;
+            border-color: #c68a1d;
+        }
+        
+        /* Bannière */
+        .baner {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin: 50px 0;
+        }
+        
+        .baner h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .baner p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #c68a1d;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #a57216;
+        }
+        
+        /* Testimonial */
+        .testimonial-section {
+            max-width: 800px;
+            margin: 80px auto;
+            text-align: center;
+        }
+        
+        .testimonial-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-quote::before,
+        .testimonial-quote::after {
+            content: '"';
+            font-size: 3rem;
+            color: #c68a1d;
+            opacity: 0.5;
+            position: absolute;
+        }
+        
+        .testimonial-quote::before {
+            top: -20px;
+            left: -20px;
+        }
+        
+        .testimonial-quote::after {
+            bottom: -40px;
+            right: -20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #c68a1d;
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        /* Section Vidéos */
+        .video-section {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+            margin: 50px 0;
+        }
+
+
+
+            .section-subtitle {
+                text-align: center;
+                font-size: 1.1rem;
+                color: #666;
+                max-width: 800px;
+                margin: 0 auto 50px;
+            }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+
+        .video-info {
+            padding: 25px;
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            color: #c68a1d;
+            margin-bottom: 10px;
+        }
+
+        .video-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .video-stats {
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .video-stats i {
+            margin-right: 5px;
+            color: #c68a1d;
+        }
+
+        
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+           
+            
+            .video-container{
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-grid{
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .video-info{
+                padding: 20px;
+            }
+            
+            
+        }    
+                
+                /* Responsive */
+                @media (max-width: 768px) {
+                    .projects-grid {
+                        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                    }
+                }
+                
+                @media (max-width: 576px) {
+                    .projects-grid {
+                        grid-template-columns: 1fr;
+                    }
+                    
+                    .project-filters {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    
+                    .filter-btn {
+                        width: 80%;
+                        margin-bottom: 10px;
+                    }
+                }
+        
+    </style>
+</head>
+<body>
+     <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-contact">
+                <span><i class="far fa-envelope"></i> wassydeco@gmail.com</span>
+                <span><i class="fas fa-phone"></i> +242 06 567 09 56</span>
+            </div>
+            <div class="top-bar-social">
+               <a href="#"><i class="fab fa-facebook-f"></i></a>
+               <a href="#"><i class="fab fa-twitter"></i></a>
+               <a href="#"><i class="fab fa-google-plus-g"></i></a>  
+               <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="main-nav">
+            <div class="logo-container">
+                <h1>WASSY</h1>
+                <p>ND Design d'Intérieur</p>
+            </div>
+            <div class="mobile-toggle">☰</div>
+            <ul class="menu">
+                <li><a href="index.html">Accueil</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projets</a></li>
+                    <li><a href="galery.html">Galerie</a></li>
+                    <li><a href="equipe.html">Notre Équipe</a></li>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="main-content">
+        <h1 class="page-title">Nos Projets Sur Mesure</h1>
+        <p class="page-subtitle">
+            Chaque espace raconte une histoire unique. Découvrez comment nous transformons les rêves en réalité à travers une sélection de nos réalisations les plus marquantes.
+        </p>
+        
+        
+        <div class="projects-grid">
+            <!-- Projet 1 - Chambre -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('images/chambre-deco.jpeg');">
+                    <div class="project-category">Chambre</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Suite Parentale Épurée</h3>
+                    <div class="project-location">
+                        <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>Paris 16ème</span>
+                    </div>
+                    <p class="project-description">
+                        Transformation d'une chambre classique en un sanctuaire de détente aux lignes épurées. Des matières naturelles et une palette de couleurs apaisantes créent une atmosphère propice au repos.
+                    </p>
+                    <div class="project-details">
+                        <div class="project-detail">
+                            <div class="detail-value">45 m²</div>
+                            <div class="detail-label">Surface</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">6 semaines</div>
+                            <div class="detail-label">Durée</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">2023</div>
+                            <div class="detail-label">Année</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projet 2 - Cuisine -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('images/cuisine-deco2.jpeg');">
+                    <div class="project-category">Cuisine</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Cuisine Conviviale Moderne</h3>
+                    <div class="project-location">
+                        <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>Lyon, Croix-Rousse</span>
+                    </div>
+                    <p class="project-description">
+                        Réaménagement complet d'une cuisine familiale permettant de combiner espace de préparation professionnel et coin repas chaleureux. Un îlot central devient le cœur de cet espace de partage.
+                    </p>
+                    <div class="project-details">
+                        <div class="project-detail">
+                            <div class="detail-value">32 m²</div>
+                            <div class="detail-label">Surface</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">8 semaines</div>
+                            <div class="detail-label">Durée</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">2024</div>
+                            <div class="detail-label">Année</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projet 3 - Salle de Bain -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('images/salle-de-bain.jpg');">
+                    <div class="project-category">Salle de Bain</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Spa Privé Urbain</h3>
+                    <div class="project-location">
+                        <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>Bordeaux Centre</span>
+                    </div>
+                    <p class="project-description">
+                        Transformation d'une salle de bains vieillissante en un véritable spa privé avec douche sensorielle, baignoire balnéo et espace détente. Les matériaux naturels créent une ambiance zen et luxueuse.
+                    </p>
+                    <div class="project-details">
+                        <div class="project-detail">
+                            <div class="detail-value">18 m²</div>
+                            <div class="detail-label">Surface</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">5 semaines</div>
+                            <div class="detail-label">Durée</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">2023</div>
+                            <div class="detail-label">Année</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projet 4 - Salon -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('images/moderne-deco.jpg');">
+                    <div class="project-category">Salon</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Salon Art Déco Contemporain</h3>
+                    <div class="project-location">
+                        <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>Marseille, Vieux Port</span>
+                    </div>
+                    <p class="project-description">
+                        Réinterprétation des codes Art Déco dans un espace contemporain. Les courbes élégantes, les matériaux nobles et une palette de couleurs sophistiquée créent un salon intemporel propice aux rencontres.
+                    </p>
+                    <div class="project-details">
+                        <div class="project-detail">
+                            <div class="detail-value">40 m²</div>
+                            <div class="detail-label">Surface</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">7 semaines</div>
+                            <div class="detail-label">Durée</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">2024</div>
+                            <div class="detail-label">Année</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projet 5 - Design Futuriste -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('images/apt-connecte.png');">
+                    <div class="project-category">Design Futuriste</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Appartement Connecté</h3>
+                    <div class="project-location">
+                        <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>La Défense, Paris</span>
+                    </div>
+                    <p class="project-description">
+                        Conception d'un appartement entièrement connecté où technologie et design se fondent harmonieusement. L'automatisation invisible optimise le confort tout en préservant une esthétique minimaliste.
+                    </p>
+                    <div class="project-details">
+                        <div class="project-detail">
+                            <div class="detail-value">35 m²</div>
+                            <div class="detail-label">Surface</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">12 semaines</div>
+                            <div class="detail-label">Durée</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">2024</div>
+                            <div class="detail-label">Année</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projet 6 - Chambre d'Enfant -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('images/chambre-enfant.jpeg');">
+                    <div class="project-category">Chambre d'Enfant</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Univers Évolutif Jeunesse</h3>
+                    <div class="project-location">
+                        <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>Nantes Centre</span>
+                    </div>
+                    <p class="project-description">
+                        Création d'une chambre modulable qui accompagne l'enfant de 3 à 15 ans. Des modules transformables et des solutions de rangement ingénieuses s'adaptent aux besoins changeants.
+                    </p>
+                    <div class="project-details">
+                        <div class="project-detail">
+                            <div class="detail-value">22 m²</div>
+                            <div class="detail-label">Surface</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">4 semaines</div>
+                            <div class="detail-label">Durée</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">2023</div>
+                            <div class="detail-label">Année</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projet 7 - Cuisine -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('images/cuisine-deco.jpg');">
+                    <div class="project-category">Cuisine</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Cuisine Compacte Optimisée</h3>
+                    <div class="project-location">
+                        <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>Montmartre, Paris</span>
+                    </div>
+                    <p class="project-description">
+                        Restructuration totale d'une cuisine parisienne exiguë pour créer un espace fonctionnel digne d'un chef. Chaque centimètre est exploité grâce à des solutions de rangement sur mesure.
+                    </p>
+                    <div class="project-details">
+                        <div class="project-detail">
+                            <div class="detail-value">9 m²</div>
+                            <div class="detail-label">Surface</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">6 semaines</div>
+                            <div class="detail-label">Durée</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">2024</div>
+                            <div class="detail-label">Année</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projet 8 - Salle de Bain -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('images/douche-déco.jpg');">
+                    <div class="project-category">Salle de Bain</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Douche Italienne Sensorielle</h3>
+                    <div class="project-location">
+                        <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>Lille, Vieux Lille</span>
+                    </div>
+                    <p class="project-description">
+                        Installation d'une douche à l'italienne avec chromothérapie, aromathérapie et jets massants dans une salle de bains aux dimensions modestes. L'utilisation du verre et de la pierre crée une impression d'espace.
+                    </p>
+                    <div class="project-details">
+                        <div class="project-detail">
+                            <div class="detail-value">7 m²</div>
+                            <div class="detail-label">Surface</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">3 semaines</div>
+                            <div class="detail-label">Durée</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">2023</div>
+                            <div class="detail-label">Année</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projet 9 - Salon -->
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('images/maison-deco2.jpg');">
+                    <div class="project-category">Salon</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Salon Acoustique Audiophile</h3>
+                    <div class="project-location">
+                        <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>Toulouse Centre</span>
+                    </div>
+                    <p class="project-description">
+                        Conception d'un salon optimisé pour l'écoute musicale avec traitement acoustique invisible et système audio intégré. L'esthétique contemporaine dialogue harmonieusement avec les contraintes techniques.
+                    </p>
+                    <div class="project-details">
+                        <div class="project-detail">
+                            <div class="detail-value">35 m²</div>
+                            <div class="detail-label">Surface</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">8 semaines</div>
+                            <div class="detail-label">Durée</div>
+                        </div>
+                        <div class="project-detail">
+                            <div class="detail-value">2024</div>
+                            <div class="detail-label">Année</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Vidéos de nos Projets -->
+<section class="video-section">
+    <div class="main-content">
+        <h2 class="page-title">Nos Projets en Vidéo</h2>
+        <p class="section-subtitle">
+            Découvrez nos réalisations à travers des présentations vidéo immersives qui révèlent chaque détail de nos créations.
+        </p>
+        
+        <div class="video-grid">
+            <!-- Vidéo 1 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <video controls poster="images/maison-deco2.jpg">
+                        <source src="vidéos/saloncontemporain.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                   
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Transformation Salon Contemporain</h3>
+                    <p class="video-description">Découvrez la métamorphose complète d'un salon parisien, du concept initial à la réalisation finale.</p>
+                    <div class="video-stats">
+                        <span><i class="fas fa-clock"></i> 0:10</span>
+                        <span><i class="fas fa-eye"></i> 1.2K vues</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vidéo 2 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <video controls poster="images/cuisine-deco1.jpeg">
+                        <source src="vidéos/cuisine.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                    
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Cuisine Ouverte Design</h3>
+                    <p class="video-description">Suivez l'aménagement d'une cuisine moderne avec îlot central et espaces optimisés.</p>
+                    <div class="video-stats">
+                        <span><i class="fas fa-clock"></i> 0:11</span>
+                        <span><i class="fas fa-eye"></i> 850 vues</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vidéo 3 -->
+            <div class="video-card">
+                <div class="video-container">
+                    <video controls poster="images/chambre-deco.jpeg">
+                        <source src="vidéos/SuiteParentale.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la lecture de vidéos.
+                    </video>
+                    
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">Suite Parentale Zen</h3>
+                    <p class="video-description">L'art de créer un espace de détente avec dressing intégré et salle de bain attenante.</p>
+                    <div class="video-stats">
+                        <span><i class="fas fa-clock"></i> 0:10</span>
+                        <span><i class="fas fa-eye"></i> 1.5K vues</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+        
+
+        
+        <div class="testimonial-section">
+            <p class="testimonial-quote">
+                L'équipe de ND Design d'Intérieur a su capturer l'essence de notre style de vie et le transformer en un intérieur qui nous ressemble complètement. Chaque détail a été pensé avec soin, créant un espace qui raconte parfaitement notre histoire.
+            </p>
+            <p class="testimonial-author">Marie & Thomas Dupont</p>
+            <p class="testimonial-role">Rénovation complète d'un appartement haussmannien</p>
+        </div>
+    </div>
+    
+    <div class="baner">
+        <h2>Des projets sur mesure qui racontent votre histoire</h2>
+        <p>Chaque espace raconte une histoire unique. Découvrez comment notre équipe peut créer votre univers personnalisé.</p>
+        <a href="contact.html" class="btn">Contactez-nous pour votre projet</a>
+    </div>
+    
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h3>À PROPOS DE NOUS</h3>
+                <p>Notre entreprise de design d'intérieur s'engage à créer des espaces qui inspirent. Avec une équipe de professionnels passionnés, nous transformons vos rêves en réalité.</p>
+                <p>Chaque projet est une nouvelle aventure où nous combinons créativité, fonctionnalité et élégance pour créer des intérieurs qui vous ressemblent.</p>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>DERNIERS ARTICLES</h3>
+                <div class="latest-post">
+                    <h4>Les tendances déco de 2025</h4>
+                    <p>Découvrez les nouvelles tendances qui façonnent...</p>
+                </div>
+                <div class="latest-post">
+                    <h4>Comment optimiser les petits espaces</h4>
+                    <p>Astuces et conseils pour tirer le meilleur parti...</p>
+                </div>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>CONTACTEZ-NOUS</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 11 RUE DE LA GLOIRE, BRAZZAVILLE</p>
+                <p><i class="fas fa-phone"></i> +242 06 567 09 56 </p>
+                <p><i class="far fa-envelope"></i> wassydeco@gmail.com</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>MENU FOOTER</h3>
+                <ul class="footer-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projets</a></li>
+                    <li><a href="galery.html">Galerie</a></li>
+                    <li><a href="equipe.html">Notre Équipe</a></li>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+                </ul>
+            </div>
+        </div>
+                     
+        <div class="copyright">
+            <p>Copyright © 2023. Tous droits réservés</p>
+            <p>Design par Grace Themes</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="back-to-top">↑</a>
+
+    <script>
+        // Code pour gérer le menu mobile
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const menu = document.querySelector('.menu');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    menu.classList.toggle('active');
+                    this.innerHTML = menu.classList.contains('active') ? '✕' : '☰';
+                });
+            }
+    </script>
+
+</body>
+</html>    

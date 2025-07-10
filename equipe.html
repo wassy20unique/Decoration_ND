@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wassy - Notre Équipe</title>
+    <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Barre supérieure */
+        .top-bar {
+            background-color: #b67b10; /* Orange */
+            color: white;
+            padding: 10px 0;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .top-bar-contact span {
+            margin-right: 20px;
+        }
+        
+        
+        /* En-tête */
+        .header {
+            padding: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        
+        .menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .menu li {
+            margin-left: 20px;
+        }
+        
+        .menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .menu a:hover {
+            color: #b67b10; /* Orange */
+        }
+        
+        
+        
+        
+        /* Intro de l'équipe */
+        .team-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        
+        .team-intro p {
+            font-size: 18px;
+            color: #555;
+        }
+        
+        /* Grille de l'équipe */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .team-member {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .member-photo {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .member-specialty {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #b67b10; /* Orange avec transparence */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-info h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 22px;
+        }
+        
+        .member-info p {
+            color: #666;
+        }
+        
+        .member-social {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .member-social a {
+            width: 30px;
+            height: 30px;
+            background-color: #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .member-social a:hover {
+            background-color: #b67b10;
+            color: white;
+        }
+        
+        /* Services spécialisés */
+        .team-specialties {
+            margin: 50px 0;
+            padding: 50px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .specialty-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .specialty-icon {
+            font-size: 40px;
+            color: #b67b10;
+            margin-bottom: 20px;
+        }
+        
+        .specialty-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        /* Témoignages */
+        .testimonials {
+            background-color: #fff;
+            padding: 50px 0;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial {
+            padding: 30px;
+        }
+        
+        .testimonial-text {
+            font-size: 18px;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .testimonial-position {
+            color: #888;
+            font-size: 14px;
+        }
+        
+        /* Appel à l'action */
+        .cta-section {
+            background-color: #b67b10;
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+            margin: 50px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: #b67b10;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #333;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px;
+                z-index: 100;
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu li {
+                margin: 10px 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .footer-grid,
+            .team-grid,
+            .specialties-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+       
+    <!-- Barre supérieure -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-contact">
+                <span>✉ wassydeco@gmail.com</span>
+                <span>☎ +242 06 567 09 56</span>
+            </div>
+            <div class="top-bar-social">
+               <i class="fab fa-facebook-f"></i>
+               <i class="fab fa-twitter"></i>
+               <i class="fab fa-google-plus-g"></i>  
+               <i class="fab fa-linkedin-in"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- En-tête -->
+    <header class="header">
+        <nav class="main-nav">
+            <div class="logo-container">
+                <h1>WASSY</h1>
+                <p>ND Design d'Intérieur</p>
+            </div>
+            <div class="mobile-toggle">☰</div>
+            <ul class="menu">
+                <li><a href="index.html">Accueil</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projets</a></li>
+                    <li><a href="galery.html">Galerie</a></li>
+                    <li><a href="equipe.html">Notre Équipe</a></li>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenu de la page Équipe -->
+    <div class="page-section container">
+        <h1 class="page-title">NOTRE ÉQUIPE</h1>
+        
+        <div class="team-intro">
+            <p>Notre équipe de designers d'intérieur talentueux et passionnés transforme vos espaces en lieux exceptionnels. Avec une expertise variée et une approche créative, nous donnons vie à votre vision tout en respectant vos besoins et votre budget.</p>
+        </div>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('images/wassy.jpg')">
+                    <div class="member-specialty">Designer Principal</div>
+                </div>
+                <div class="member-info">
+                    <h3>Sophie Dubois</h3>
+                    <p>Avec plus de 15 ans d'expérience, Sophie excelle dans la création d'espaces minimalistes et fonctionnels. Sa spécialité est de transformer les petits espaces en environnements élégants et pratiques, maximisant chaque centimètre carré tout en maintenant une esthétique épurée.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('images/personnel4.jpg')">
+                    <div class="member-specialty">Design Contemporain</div>
+                </div>
+                <div class="member-info">
+                    <h3>Thomas Martin</h3>
+                    <p>Thomas apporte une perspective moderne avec sa vision audacieuse des couleurs et des textures. Spécialisé dans les designs contemporains, il crée des espaces qui allient harmonieusement confort et innovation. Sa signature : des choix de matériaux inattendus et des touches architecturales uniques.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('images/personnel5.jpg')">
+                    <div class="member-specialty">Design Durable</div>
+                </div>
+                <div class="member-info">
+                    <h3>Émilie Rousseau</h3>
+                    <p>Émilie est notre experte en design écologique et durable. Elle excelle dans la sélection de matériaux respectueux de l'environnement et l'intégration de solutions énergétiques efficaces. Son approche combine esthétique naturelle et responsabilité environnementale.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('images/personnel4.jpg')">
+                    <div class="member-specialty">Expert Couleur</div>
+                </div>
+                <div class="member-info">
+                    <h3>Antoine Lefèvre</h3>
+                    <p>Antoine possède un talent unique pour les palettes de couleurs et les combinaisons texturales. Son expertise en psychologie des couleurs lui permet de créer des atmosphères qui correspondent parfaitement aux personnalités et aux besoins émotionnels des clients.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('images/Personnel2.jpeg')">
+                    <div class="member-specialty">Design Commercial</div>
+                </div>
+                <div class="member-info">
+                    <h3>Claire Moreau</h3>
+                    <p>Claire se spécialise dans les espaces commerciaux et professionnels. Elle sait comment créer des environnements de travail qui stimulent la productivité tout en reflétant l'identité de marque. Son approche équilibre fonctionnalité et design distinctif.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-photo" style="background-image: url('images/personnel1.jpg')">
+                    <div class="member-specialty">Style Classique</div>
+                </div>
+                <div class="member-info">
+                    <h3>Julien Blanc</h3>
+                    <p>Julien est notre gardien de l'élégance intemporelle. Expert en design d'intérieur classique et traditionnel, il crée des espaces sophistiqués avec une attention méticuleuse aux détails architecturaux et aux finitions de qualité supérieure.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-houzz"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Spécialités de l'équipe -->
+    <div class="team-specialties">
+        <div class="container">
+            <h2 class="page-title">NOS SPÉCIALITÉS</h2>
+            
+            <div class="specialties-grid">
+                <div class="specialty-card">
+                    <div class="specialty-icon">🏠</div>
+                    <h3>Design Résidentiel</h3>
+                    <p>Transformation complète ou rafraîchissement de votre espace de vie, nous créons des intérieurs qui reflètent votre personnalité et répondent à vos besoins quotidiens.</p>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-icon">🏢</div>
+                    <h3>Design Commercial</h3>
+                    <p>Bureaux, restaurants, hôtels ou boutiques, nous concevons des espaces commerciaux fonctionnels qui renforcent votre image de marque et optimisent l'expérience client.</p>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-icon">🌱</div>
+                    <h3>Design Écologique</h3>
+                    <p>Des intérieurs respectueux de l'environnement utilisant des matériaux durables, des solutions économes en énergie et des pratiques de conception responsables.</p>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-icon">🎨</div>
+                    <h3>Consultation Couleur</h3>
+                    <p>Expertise en théorie des couleurs pour créer des palettes personnalisées qui transforment l'ambiance et l'énergie de votre espace.</p>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-icon">📐</div>
+                    <h3>Space Planning</h3>
+                    <p>Optimisation de l'agencement et de la circulation pour maximiser l'espace disponible et améliorer la fonctionnalité de votre intérieur.</p>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-icon">💡</div>
+                    <h3>Conception d'Éclairage</h3>
+                    <p>Création de plans d'éclairage stratégiques qui mettent en valeur votre espace, améliorent l'humeur et répondent à vos besoins fonctionnels.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Témoignages -->
+    <div class="testimonials">
+        <div class="container">
+            <h2 class="page-title">TÉMOIGNAGES</h2>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p class="testimonial-text">"L'équipe de Spangle a complètement transformé notre maison. Leur attention aux détails et leur compréhension de nos besoins ont dépassé toutes nos attentes. Nous adorons chaque centimètre de notre nouvel espace!"</p>
+                    <p class="testimonial-author">Marie et Pierre Dupont</p>
+                    <p class="testimonial-position">Projet Résidentiel à Paris</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Appel à l'action -->
+    <div class="cta-section">
+        <div class="container">
+            <h2>Prêt à transformer votre espace?</h2>
+            <p>Notre équipe est impatiente de donner vie à votre vision!</p>
+            <a href="contact.html" class="cta-button">Contactez-nous aujourd'hui</a>
+        </div>
+    </div>
+  
+   <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h3>À PROPOS DE NOUS</h3>
+                <p>Notre entreprise de design d'intérieur s'engage à créer des espaces qui inspirent. Avec une équipe de professionnels passionnés, nous transformons vos rêves en réalité.</p>
+                <p>Chaque projet est une nouvelle aventure où nous combinons créativité, fonctionnalité et élégance pour créer des intérieurs qui vous ressemblent.</p>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>DERNIERS ARTICLES</h3>
+                <div class="latest-post">
+                    <h4>Les tendances déco de 2025</h4>
+                    <p>Découvrez les nouvelles tendances qui façonnent...</p>
+                </div>
+                <div class="latest-post">
+                    <h4>Comment optimiser les petits espaces</h4>
+                    <p>Astuces et conseils pour tirer le meilleur parti...</p>
+                </div>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>CONTACTEZ-NOUS</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 11 RUE DE LA GLOIRE, BRAZZAVILLE</p>
+                <p><i class="fas fa-phone"></i> +242 06 567 09 56 </p>
+                <p><i class="far fa-envelope"></i> wassydeco@gmail.com</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>MENU FOOTER</h3>
+                <ul class="footer-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projets</a></li>
+                    <li><a href="galery.html">Galerie</a></li>
+                    <li><a href="equipe.html">Notre Équipe</a></li>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+                </ul>
+            </div>
+        </div>
+                     
+        <div class="copyright">
+            <p>Copyright © 2023. Tous droits réservés</p>
+            <p>Design par Grace Themes</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        // Script pour le menu mobile
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.menu').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

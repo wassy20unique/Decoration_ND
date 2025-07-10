@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Style pour la section Services */
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 15px;
+        }
+
+        
+
+        .service-box {
+            flex: 1 0 calc(25% - 30px);
+            margin: 15px;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-box img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .service-box h3 {
+            padding: 15px 15px 5px;
+            margin: 0;
+            color: #333;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .service-box p {
+            padding: 0 15px 15px;
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .service-button {
+            display: block;
+            width: 80%;
+            margin: 0 auto 15px;
+            padding: 10px 0;
+            background-color: #b67b10;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .service-button:hover {
+            background-color: #b67b10;
+        }
+
+        /* Style pour les sections de pages de services */
+        .page-section {
+            padding: 40px 0;
+            display: none; /* Masquer toutes les sections par défaut */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+
+
+
+        .content {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .content ul {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .content ul li {
+            margin-bottom: 10px;
+        }
+
+        .content a {
+            color: #b67b10;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .content a:hover {
+            color: #b67b10;
+            text-decoration: underline;
+        }
+
+        /* Style pour la galerie de services slider */
+        .service-slider {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .service-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .service-slide {
+            min-width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .slider-controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .slider-btn {
+            background-color: #b67b10;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 0 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-btn:hover {
+            background-color: #b67b10;
+        }
+
+        /* Style pour la mise en page du détail du service */
+        .service-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .service-image {
+            flex: 0 0 40%;
+        }
+
+        .service-image img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-description {
+            flex: 0 0 55%;
+        }
+
+        .service-description h2 {
+            margin-top: 0;
+            color: #b67b10;
+            margin-bottom: 20px;
+        }
+
+        .service-description p {
+            margin-bottom: 15px;
+        }
+
+        .service-features {
+            margin: 20px 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #b67b10;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+
+        }
+
+        /* Ajoutez ce CSS pour un défilement plus fluide */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Style pour compenser la hauteur du header fixe si vous en avez un */
+.page-section {
+    scroll-margin-top: 80px; /* Ajustez selon la hauteur de votre header */
+}
+
+/* Alternative pour créer un point d'ancrage visuel */
+.service-anchor {
+    position: relative;
+}
+
+.service-anchor::before {
+    content: '';
+    display: block;
+    height: 80px; /* Hauteur de compensation */
+    margin-top: -80px;
+    visibility: hidden;
+}
+
+        .back-link:hover {
+            background-color: #b67b10;
+        }
+
+        /* Media Queries pour la Responsivité */
+        @media screen and (max-width: 992px) {
+            .service-box {
+                flex: 1 0 calc(33.333% - 30px);
+            }
+            
+            .service-detail {
+                flex-direction: column;
+            }
+            
+            .service-image, .service-description {
+                flex: 0 0 100%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .service-box {
+                flex: 1 0 calc(50% - 30px);
+            }
+            
+            .page-title {
+                font-size: 28px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .service-box {
+                flex: 1 0 100%;
+                margin: 15px 0;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .service-box img {
+                height: 180px;
+            }
+            
+            /* Ajustement pour la top-bar */
+            .top-bar-content {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            
+            .top-bar-contact {
+                margin-bottom: 10px;
+            }
+            
+            .top-bar-contact span {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+
+        @media screen and (max-width: 375px) {
+            .service-box h3 {
+                font-size: 16px;
+            }
+            
+            .service-box p {
+                font-size: 13px;
+            }
+            
+            .service-box img {
+                height: 160px;
+            }
+            
+            .page-title {
+                font-size: 22px;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-contact">
+                <span><i class="far fa-envelope"></i> wassydeco@gmail.com</span>
+                <span><i class="fas fa-phone"></i> +242 06 567 09 56</span>
+            </div>
+            <div class="top-bar-social">
+               <a href="#"><i class="fab fa-facebook-f"></i></a>
+               <a href="#"><i class="fab fa-twitter"></i></a>
+               <a href="#"><i class="fab fa-google-plus-g"></i></a>  
+               <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header">
+        <nav class="main-nav">
+            <div class="logo-container">
+                <h1>WASSY</h1>
+                <p>ND Design d'Intérieur</p>
+            </div>
+            <div class="mobile-toggle">☰</div>
+            <ul class="menu">
+                <li><a href="index.html">Accueil</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projets</a></li>
+                    <li><a href="galery.html">Galerie</a></li>
+                    <li><a href="equipe.html">Notre Équipe</a></li>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Services Section avec Slider -->
+    <div class="service-slider">
+        <div class="service-slides">
+            <!-- Slide 1 -->
+            <div class="service-slide">
+                <div class="service-box">
+                    <img src="images/image1.jpeg" alt="Service 1">
+                    <h3>DESIGN D'INTÉRIEUR</h3>
+                    <p>Création d'espaces intérieurs élégants et fonctionnels adaptés à vos besoins...</p>
+                    <a href="#" class="service-button" data-service="services1">En savoir plus</a>
+                </div>
+                <div class="service-box">
+                    <img src="images/image2.jpeg" alt="Service 2">
+                    <h3>RÉNOVATION</h3>
+                    <p>Transformation complète de votre espace avec des solutions modernes et durables...</p>
+                    <a href="#" class="service-button" data-service="services2">En savoir plus</a>
+                </div>
+                <div class="service-box">
+                    <img src="images/image3.jpeg" alt="Service 3">
+                    <h3>CONSEIL DÉCORATION</h3>
+                    <p>Conseils professionnels pour harmoniser vos espaces et créer l'ambiance parfaite...</p>
+                    <a href="#" class="service-button" data-service="services3">En savoir plus</a>
+                </div>
+                <div class="service-box">
+                    <img src="images/image4.jpg" alt="Service 4">
+                    <h3>AMÉNAGEMENT COMMERCIAL</h3>
+                    <p>Solutions complètes pour les espaces commerciaux et professionnels...</p>
+                    <a href="#" class="service-button" data-service="services4">En savoir plus</a>
+                </div>
+            </div>
+            
+            <!-- Slide 2 (services supplémentaires) -->
+            <div class="service-slide">
+                <div class="service-box">
+                    <img src="images/maison-deco.jpg" alt="Service 5">
+                    <h3>HOME STAGING</h3>
+                    <p>Mise en valeur de votre propriété pour une vente rapide et au meilleur prix...</p>
+                    <a href="#" class="service-button" data-service="services5">En savoir plus</a>
+                </div>
+                <div class="service-box">
+                    <img src="images/deco-3D.jpg" alt="Service 6">
+                    <h3>CONCEPTION 3D</h3>
+                    <p>Visualisation en 3D de votre projet avant la réalisation pour un résultat parfait...</p>
+                    <a href="#" class="service-button" data-service="services6">En savoir plus</a>
+                </div>
+                <div class="service-box">
+                    <img src="images/personnel3.jpg" alt="Service 7">
+                    <h3>ARCHITECTURE D'INTÉRIEUR</h3>
+                    <p>Transformation structurelle et optimisation des espaces pour plus de fonctionnalité...</p>
+                    <a href="#" class="service-button" data-service="services7">En savoir plus</a>
+                </div>
+                <div class="service-box">
+                    <img src="images/personnel4.jpg" alt="Service 8">
+                    <h3>MOBILIER SUR MESURE</h3>
+                    <p>Création de meubles personnalisés adaptés à vos espaces et à votre style...</p>
+                    <a href="#" class="service-button" data-service="services8">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slider-controls">
+            <button class="slider-btn prev"><i class="fas fa-chevron-left"></i> Précédent</button>
+            <button class="slider-btn next">Suivant <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Service Principal -->
+    <div id="services-main" class="page-section container">
+        <h1 class="page-title">NOS SERVICES</h1>
+        <div class="content">
+            <p>Découvrez notre gamme de services de design d'intérieur adaptés à vos besoins. Nous proposons des solutions complètes pour les espaces résidentiels et commerciaux.</p>
+            <p>Choisissez parmi nos services spécialisés ci-dessous :</p>
+            <ul>
+                <li><a href="#" class="service-link" data-service="services1">Design d'Intérieur</a></li>
+                <li><a href="#" class="service-link" data-service="services2">Rénovation</a></li>
+                <li><a href="#" class="service-link" data-service="services3">Conseil Décoration</a></li>
+                <li><a href="#" class="service-link" data-service="services4">Aménagement Commercial</a></li>
+                <li><a href="#" class="service-link" data-service="services5">Home Staging</a></li>
+                <li><a href="#" class="service-link" data-service="services6">Conception 3D</a></li>
+                <li><a href="#" class="service-link" data-service="services7">Architecture d'Intérieur</a></li>
+                <li><a href="#" class="service-link" data-service="services8">Mobilier Sur Mesure</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sections détaillées des services -->
+    <div id="services1" class="page-section container">
+        <h1 class="page-title">DESIGN D'INTÉRIEUR</h1>
+        <div class="service-detail">
+            <div class="service-image">
+                <img src="images/moderne-deco.jpg" alt="Design d'Intérieur">
+            </div>
+            <div class="service-description">
+                <h2>Un service complet de design d'intérieur</h2>
+                <p>Notre équipe de designers d'intérieur talentueux travaille en étroite collaboration avec vous pour créer des espaces qui reflètent votre personnalité et répondent à vos besoins fonctionnels.</p>
+                <p>Que vous souhaitiez un look moderne, traditionnel ou éclectique, nous mettons notre expertise à votre service pour transformer votre vision en réalité.</p>
+                
+                <div class="service-features">
+                    <h3>Ce service comprend :</h3>
+                    <ul>
+                        <li>Consultation initiale et évaluation de vos besoins</li>
+                        <li>Création de planches d'ambiance et de concepts de design</li>
+                        <li>Sélection de matériaux, de couleurs et de textures</li>
+                        <li>Plans d'aménagement détaillés</li>
+                        <li>Coordination avec les artisans et les fournisseurs</li>
+                        <li>Supervision du projet jusqu'à la livraison finale</li>
+                    </ul>
+                </div>
+                
+                <a href="#" class="back-link" data-return="main">Retour aux services</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="services2" class="page-section container">
+        <h1 class="page-title">RÉNOVATION</h1>
+        <div class="service-detail">
+            <div class="service-image">
+                <img src="images/maison-deco.jpg" alt="Rénovation">
+            </div>
+            <div class="service-description">
+                <h2>Transformez votre espace avec nos services de rénovation</h2>
+                <p>Donnez une nouvelle vie à votre intérieur avec nos services de rénovation complets. Qu'il s'agisse de moderniser une pièce ou de transformer entièrement votre maison, notre équipe d'experts vous accompagne à chaque étape.</p>
+                <p>Nous combinons design innovant et savoir-faire technique pour créer des espaces aussi beaux que fonctionnels, tout en respectant votre budget et vos délais.</p>
+                
+                <div class="service-features">
+                    <h3>Notre processus de rénovation :</h3>
+                    <ul>
+                        <li>Évaluation complète de l'espace existant</li>
+                        <li>Planification détaillée et budgétisation</li>
+                        <li>Conception architecturale et design d'intérieur</li>
+                        <li>Démolition et préparation</li>
+                        <li>Travaux de construction et finitions</li>
+                        <li>Installation de mobilier et décoration</li>
+                    </ul>
+                </div>
+                
+                <a href="#" class="back-link" data-return="main">Retour aux services</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="services3" class="page-section container">
+        <h1 class="page-title">CONSEIL DÉCORATION</h1>
+        <div class="service-detail">
+            <div class="service-image">
+                <img src="images/Personnel2.jpeg" alt="Conseil Décoration">
+            </div>
+            <div class="service-description">
+                <h2>Expertise en décoration pour sublimer votre intérieur</h2>
+                <p>Vous aimez votre espace mais vous sentez qu'il manque quelque chose ? Notre service de conseil en décoration est fait pour vous. Nos décorateurs professionnels vous aideront à créer l'ambiance parfaite en harmonisant couleurs, textures et accessoires.</p>
+                <p>Nous vous proposons des solutions adaptées à votre style de vie, à vos goûts et à votre budget, pour un résultat qui vous ressemble vraiment.</p>
+                
+                <div class="service-features">
+                    <h3>Notre service comprend :</h3>
+                    <ul>
+                        <li>Analyse de l'espace et du style existant</li>
+                        <li>Conseils personnalisés sur les couleurs et l'agencement</li>
+                        <li>Sélection d'accessoires et d'éléments décoratifs</li>
+                        <li>Recommandations d'éclairage et de textiles</li>
+                        <li>Mise en valeur des pièces maîtresses</li>
+                        <li>Conseils pour un aménagement optimal</li>
+                    </ul>
+                </div>
+                
+                <a href="#" class="back-link" data-return="main">Retour aux services</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="services4" class="page-section container">
+        <h1 class="page-title">AMÉNAGEMENT COMMERCIAL</h1>
+        <div class="service-detail">
+            <div class="service-image">
+                <img src="images/image4.jpg" alt="Aménagement Commercial">
+            </div>
+            <div class="service-description">
+                <h2>Des espaces professionnels à votre image</h2>
+                <p>Votre espace commercial est le reflet de votre marque. Notre équipe spécialisée en aménagement commercial crée des environnements qui optimisent le flux de travail tout en reflétant l'identité de votre entreprise.</p>
+                <p>Du bureau à la boutique, en passant par les restaurants et les hôtels, nous concevons des espaces qui impressionnent vos clients et motivent vos équipes.</p>
+                
+                <div class="service-features">
+                    <h3>Nos solutions commerciales :</h3>
+                    <ul>
+                        <li>Analyse des besoins fonctionnels et de l'image de marque</li>
+                        <li>Conception d'espaces optimisés pour votre activité</li>
+                        <li>Sélection de mobilier et d'équipements professionnels</li>
+                        <li>Solutions d'éclairage et d'acoustique</li>
+                        <li>Respect des normes de sécurité et d'accessibilité</li>
+                        <li>Gestion de projet clé en main</li>
+                    </ul>
+                </div>
+                
+                <a href="#" class="back-link" data-return="main">Retour aux services</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="services5" class="page-section container">
+        <h1 class="page-title">HOME STAGING</h1>
+        <div class="service-detail">
+            <div class="service-image">
+                <img src="images/maison-deco2.jpg" alt="Home Staging">
+            </div>
+            <div class="service-description">
+                <h2>Valorisez votre bien immobilier</h2>
+                <p>Le home staging est l'art de mettre en valeur un bien immobilier pour maximiser son potentiel de vente. Nos experts transforment votre propriété pour créer une première impression inoubliable auprès des acheteurs potentiels.</p>
+                <p>Avec des interventions ciblées et un investissement minimal, nous augmentons significativement l'attractivité de votre bien et accélérons sa vente à un meilleur prix.</p>
+                
+                <div class="service-features">
+                    <h3>Notre approche du home staging :</h3>
+                    <ul>
+                        <li>Évaluation complète de votre propriété</li>
+                        <li>Dépersonnalisation et désencombrement des espaces</li>
+                        <li>Réagencement du mobilier existant</li>
+                        <li>Ajout d'éléments décoratifs stratégiques</li>
+                        <li>Mise en valeur des points forts du bien</li>
+                        <li>Conseils pour les visites et les photos immobilières</li>
+                    </ul>
+                </div>
+                
+                <a href="#" class="back-link" data-return="main">Retour aux services</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="services6" class="page-section container">
+        <h1 class="page-title">CONCEPTION 3D</h1>
+        <div class="service-detail">
+            <div class="service-image">
+                <img src="images/deco-3D2.jpg" alt="Conception 3D">
+            </div>
+            <div class="service-description">
+                <h2>Visualisez votre projet avant sa réalisation</h2>
+                <p>Notre service de conception 3D vous permet de visualiser votre futur espace avec un réalisme saisissant. Grâce aux technologies de pointe, nous créons des rendus photoréalistes qui vous aident à prendre des décisions éclairées avant le début des travaux.</p>
+                <p>Cette approche réduit les incertitudes et garantit que le résultat final correspond exactement à vos attentes.</p>
+                
+                <div class="service-features">
+                    <h3>Les avantages de la conception 3D :</h3>
+                    <ul>
+                        <li>Visualisation précise de l'espace et des volumes</li>
+                        <li>Possibilité d'explorer différentes options de design</li>
+                        <li>Simulation réaliste des matériaux et de l'éclairage</li>
+                        <li>Identification précoce des problèmes potentiels</li>
+                        <li>Communication claire du projet à toutes les parties prenantes</li>
+                        <li>Ajustements faciles avant la phase de construction</li>
+                    </ul>
+                </div>
+                
+                <a href="#" class="back-link" data-return="main">Retour aux services</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="services7" class="page-section container">
+        <h1 class="page-title">ARCHITECTURE D'INTÉRIEUR</h1>
+        <div class="service-detail">
+            <div class="service-image">
+                <img src="images/personnel3.jpg" alt="Architecture d'Intérieur">
+            </div>
+            <div class="service-description">
+                <h2>Repensez la structure de votre espace</h2>
+                <p>Notre service d'architecture d'intérieur va au-delà de la simple décoration pour repenser la structure même de votre espace. Nos architectes d'intérieur créent des solutions innovantes qui optimisent la circulation, la lumière naturelle et la fonctionnalité.</p>
+                <p>Qu'il s'agisse de modifier des cloisons, de créer des volumes ou de repenser entièrement l'agencement, nous concevons des espaces qui répondent parfaitement à votre mode de vie.</p>
+                
+                <div class="service-features">
+                    <h3>Notre expertise comprend :</h3>
+                    <ul>
+                        <li>Réaménagement structurel des espaces</li>
+                        <li>Modification de cloisons et d'ouvertures</li>
+                        <li>Optimisation des flux de circulation</li>
+                        <li>Création de mezzanines et d'espaces modulables</li>
+                        <li>Intégration harmonieuse des contraintes techniques</li>
+                        <li>Plans techniques détaillés pour les artisans</li>
+                    </ul>
+                </div>
+                
+                <a href="#" class="back-link" data-return="main">Retour aux services</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="services8" class="page-section container">
+        <h1 class="page-title">MOBILIER SUR MESURE</h1>
+        <div class="service-detail">
+            <div class="service-image">
+                <img src="images/personnel4.jpg" alt="Mobilier Sur Mesure">
+            </div>
+            <div class="service-description">
+                <h2>Des créations uniques adaptées à vos espaces</h2>
+                <p>Le mobilier sur mesure est la solution idéale pour les espaces atypiques ou pour ceux qui recherchent des pièces uniques. Nos designers et artisans créent des meubles qui s'intègrent parfaitement à votre intérieur, maximisent l'espace disponible et reflètent votre style personnel.</p>
+                <p>Chaque pièce est conçue avec soin, utilisant des matériaux de qualité et un savoir-faire artisanal pour une durabilité et une esthétique exceptionnelles.</p>
+                
+                <div class="service-features">
+                    <h3>Notre processus de création :</h3>
+                    <ul>
+                        <li>Consultation pour comprendre vos besoins spécifiques</li>
+                        <li>Conception et dessin détaillé du mobilier</li>
+                        <li>Sélection des matériaux et des finitions</li>
+                        <li>Fabrication par des artisans qualifiés</li>
+                        <li>Installation professionnelle</li>
+                        <li>Service après-vente et garantie</li>
+                    </ul>
+                </div>
+                
+                <a href="#" class="back-link" data-return="main">Retour aux services</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h3>À PROPOS DE NOUS</h3>
+                <p>Notre entreprise de design d'intérieur s'engage à créer des espaces qui inspirent. Avec une équipe de professionnels passionnés, nous transformons vos rêves en réalité.</p>
+                <p>Chaque projet est une nouvelle aventure où nous combinons créativité, fonctionnalité et élégance pour créer des intérieurs qui vous ressemblent.</p>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>DERNIERS ARTICLES</h3>
+                <div class="latest-post">
+                    <h4>Les tendances déco de 2025</h4>
+                    <p>Découvrez les nouvelles tendances qui façonnent...</p>
+                </div>
+                <div class="latest-post">
+                    <h4>Comment optimiser les petits espaces</h4>
+                    <p>Astuces et conseils pour tirer le meilleur parti...</p>
+                </div>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>CONTACTEZ-NOUS</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 11 RUE DE LA GLOIRE, BRAZZAVILLE</p>
+                <p><i class="fas fa-phone"></i> +242 06 567 09 56 </p>
+                <p><i class="far fa-envelope"></i> wassydeco@gmail.com</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+                <div class="footer-widget">
+                <h3>MENU PIED DE PAGE</h3>
+                <ul class="footer-menu">
+                  <li><a href="index.html">Accueil</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projets</a></li>
+                    <li><a href="galery.html">Galerie</a></li>
+                    <li><a href="equipe.html">Notre Équipe</a></li>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>Copyright © 2023. All rights reserved</p>
+            <p>Design by Grace Themes</p>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top">↑</a>
+
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Afficher la section principale des services par défaut
+    document.getElementById('services-main').style.display = 'block';
+
+    // Gestionnaire pour les boutons "En savoir plus"
+    document.querySelectorAll('.service-button').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Masquer toutes les sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Afficher la section correspondante
+            const serviceId = this.getAttribute('data-service');
+            const targetSection = document.getElementById(serviceId);
+            targetSection.style.display = 'block';
+            
+            // Attendre un peu que l'élément soit visible avant de défiler
+            setTimeout(() => {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
+        });
+    });
+
+    // Gestionnaire pour les liens de service dans la liste
+    document.querySelectorAll('.service-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Masquer toutes les sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Afficher la section correspondante
+            const serviceId = this.getAttribute('data-service');
+            const targetSection = document.getElementById(serviceId);
+            targetSection.style.display = 'block';
+            
+            // Attendre un peu que l'élément soit visible avant de défiler
+            setTimeout(() => {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
+        });
+    });
+
+    // Gestionnaire pour les boutons "Retour aux services"
+    document.querySelectorAll('.back-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Masquer toutes les sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Afficher la section principale des services
+            const mainSection = document.getElementById('services-main');
+            mainSection.style.display = 'block';
+            
+            // Défiler vers la section principale
+            setTimeout(() => {
+                mainSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
+        });
+    });
+
+    // Fonctionnalité pour le slider de services
+    const slides = document.querySelector('.service-slides');
+    const slideWidth = document.querySelector('.service-slide').offsetWidth;
+    let currentSlide = 0;
+    const totalSlides = document.querySelectorAll('.service-slide').length;
+
+    // Bouton suivant
+    document.querySelector('.slider-btn.next').addEventListener('click', function() {
+        if (currentSlide < totalSlides - 1) {
+            currentSlide++;
+            updateSliderPosition();
+        }
+    });
+
+    // Bouton précédent
+    document.querySelector('.slider-btn.prev').addEventListener('click', function() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSliderPosition();
+        }
+    });
+
+    // Fonction pour mettre à jour la position du slider
+    function updateSliderPosition() {
+        slides.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    }
+
+    // Code pour gérer le menu mobile
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const menu = document.querySelector('.menu');
+    
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', function() {
+            menu.classList.toggle('active');
+            this.innerHTML = menu.classList.contains('active') ? '✕' : '☰';
+        });
+    }
+});
+    </script>

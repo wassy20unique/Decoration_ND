@@ -1,0 +1,733 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #555;
+    line-height: 1.6;
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Header */
+.top-bar {
+    background-color: #b67b10;
+    color: white;
+    padding: 5px 0;
+    font-size: 12px;
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.top-bar-contact span {
+    margin-right: 20px;
+}
+
+.top-bar-social  {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 1%;
+}
+
+.top-bar-social i {
+    color: white;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.header {
+   padding: 20px 0;
+   background-color: white;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #eee;
+}
+
+.logo-container {
+    background-color: #b67b10;
+    color: white;
+    padding: 20px;
+    width: 220px;
+    height: 100px;
+}
+
+.logo-container h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.logo-container p {
+    font-size: 14px;
+}
+
+.main-nav {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    position: relative; /* Pour positionner le bouton mobile */
+    padding: 0 20px; /* Ajoutez du padding */
+}
+
+
+.menu {
+    display: flex;
+    margin-left: 20px;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu > li > a {
+    display: block;
+    padding: 40px 20px;
+    transition: background-color 0.3s;
+}
+
+.menu > li:hover > a {
+    background-color: #f9f9f9;
+}
+
+.menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+.submenu {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 200px;
+    display: none;
+    z-index: 10;
+}
+
+.menu li:hover .submenu {
+    display: block;
+}
+
+.submenu li a {
+    display: block;
+    padding: 10px 15px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.submenu li a:hover {
+    background-color: #f9f9f9;
+}
+
+/* Bouton menu mobile - caché par défaut */
+.mobile-toggle {
+    display: none;
+    position: absolute;
+    right: 20px; /* Augmentez la valeur si nécessaire */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    color: #333; /* Ajoutez une couleur pour le voir */
+}
+
+
+/* Main Content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 15px;
+}
+
+.page-title {
+    text-align: center;
+            color: #b67b10; /* Orange */
+            padding: 15px;
+            margin: 30px auto;
+            max-width: 400px;
+            border: 3px solid #b67b10;
+            position: relative;
+            font-size: 28px;
+}
+
+.page-title:after {
+            content: none; /* Supprime la barre horizontale précédente */
+        }
+
+
+/* Projects Section */
+.projects-intro {
+    margin-bottom: 30px;
+    color: #777;
+}
+
+.project-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.project-slide {
+    flex: 0 0 280px;
+    height: 200px;
+    background-color: #eee;
+    scroll-snap-align: start;
+}
+
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+.slider-dot.active {
+    background-color: #b67b10;
+}
+
+/* Two Column Layout */
+.two-column {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 30px;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: #f9f9f9;
+}
+
+.sidebar-widget {
+    margin-bottom: 30px;
+}
+
+.sidebar-title {
+    background-color: #b67b10;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.sidebar-widget ul li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #ddd;
+}
+
+/* Contact Form */
+.contact-form .form-row {
+    margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.contact-form textarea {
+    height: 150px;
+}
+
+.contact-info {
+    background-color: #b67b10;
+    color: white;
+    padding: 20px;
+}
+
+.contact-info h3 {
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+}
+
+.btn {
+    background-color: #b67b10;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #aaa;
+    padding: 40px 0 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 0 15px;
+}
+
+.footer-widget h3 {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.footer-menu a {
+    color: #aaa;
+}
+
+.footer-menu li {
+    margin-bottom: 10px;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    color: #777;
+    font-size: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #666;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Style supplémentaire pour le slider */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/principale.png');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.slider h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.slider p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.slider .btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #b67b10;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.slider .btn:hover {
+  background-color: #b67b10;
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.8rem;
+  padding: 15px 20px;
+  z-index: 10;
+}
+
+.slide-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slide-btn.prev {
+  left: 20px;
+}
+
+.slide-btn.next {
+  right: 20px;
+}
+
+/* Adaptation pour les appareils mobiles */
+@media (max-width: 768px) {
+  .hero {
+    height: 300px;
+  }
+  
+  .slider h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .slider p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .slide-btn {
+    font-size: 1.4rem;
+    padding: 10px 15px;
+  }
+  
+  .slide-btn.prev {
+    left: 10px;
+  }
+  
+  .slide-btn.next {
+    right: 10px;
+  }
+}
+
+/* Styles pour la section Services */
+
+/* Style global pour la section services */
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 15px;
+}
+
+/* Style pour chaque boîte de service */
+.service-box {
+  flex: 1 0 calc(25% - 30px);
+  margin: 15px;
+  background-color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.service-box h3 {
+  padding: 15px 15px 5px;
+  margin: 0;
+  color: #333;
+  font-size: 18px;
+  text-align: center;
+}
+
+.service-box p {
+  padding: 0 15px 15px;
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+/* Media Queries pour la Responsivité */
+
+/* Pour les tablettes (768px et moins) */
+@media screen and (max-width: 768px) {
+  .service-box {
+    flex: 1 0 calc(50% - 30px);
+  }
+  
+  .page-title {
+    font-size: 28px;
+  }
+}
+
+/* Pour les téléphones mobiles en mode paysage (576px et moins) */
+@media screen and (max-width: 576px) {
+  .service-box {
+    flex: 1 0 100%;
+    margin: 15px 0;
+  }
+  
+  .page-title {
+    font-size: 24px;
+  }
+  
+  .service-box img {
+    height: 180px;
+  }
+}
+
+/* Pour les téléphones mobiles en mode portrait (375px et moins) */
+@media screen and (max-width: 375px) {
+  .service-box h3 {
+    font-size: 16px;
+  }
+  
+  .service-box p {
+    font-size: 13px;
+  }
+  
+  .service-box img {
+    height: 160px;
+  }
+  
+  .page-title {
+    font-size: 22px;
+  }
+}
+
+/* Indicateur pour sous-menus sur mobile */
+.dropdown-toggle {
+    display: none;
+}
+
+/* Media Queries pour rendre le site responsive */
+@media screen and (max-width: 1024px) {
+    .menu > li > a {
+        padding: 30px 15px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    /* Menu hamburger */
+    .mobile-toggle {
+        display: block;
+    }
+    
+    .main-nav {
+        padding: 0;
+        flex-wrap: wrap;
+    }
+    
+    .logo-container {
+        height: auto;
+        width: auto;
+        padding: 15px;
+    }
+    
+    .menu {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        margin-left: 0;
+        background-color: white;
+        box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+    }
+    
+    .menu.active {
+        display: flex;
+    }
+    
+    .menu > li {
+        border-bottom: 1px solid #eee;
+    }
+    
+    .menu > li > a {
+        padding: 15px;
+    }
+    
+    .dropdown-toggle {
+        display: inline;
+        float: right;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    
+    .submenu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        display: none;
+    }
+    
+    .menu li:hover .submenu {
+        display: none;
+    }
+    
+    .menu li.show-submenu .submenu {
+        display: block;
+    }
+    
+    .submenu li a {
+        padding-left: 30px;
+    }
+    
+    /* Layout et grilles */
+    .two-column {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-filter {
+        flex-wrap: wrap;
+    }
+    
+    .gallery-filter a {
+        margin-bottom: 10px;
+    }
+    
+    .banner {
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    /* Header */
+    .top-bar-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .top-bar-contact {
+        margin-bottom: 5px;
+        text-align: center;
+    }
+    
+    .top-bar-contact span {
+        display: block;
+        margin: 5px 0;
+    }
+    
+    /* Layout */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .banner {
+        height: 200px;
+    }
+    
+    .page-title {
+        font-size: 24px;
+        text-align: center;
+    }
+    
+    /* Contact */
+    .contact-form .form-row div {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Layout */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-slide {
+        flex: 0 0 100%;
+    }
+}
+
+ @media (max-width: 768px) {
+        .mobile-toggle {
+            display: block;
+        }
+        
+        .menu {
+            display: none;
+        }
+        
+        .menu.active {
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            z-index: 1000;
+        }
+        
+        .dropdown-toggle {
+            float: right;
+            cursor: pointer;
+        }
+        
+        .submenu {
+            display: none;
+        }
+        
+        .show-submenu .submenu {
+            display: block;
+        }
+    }

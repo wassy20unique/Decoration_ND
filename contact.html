@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+         input, textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            font-size: 1em;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+        <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-contact">
+                <span>✉ wassydeco@gmail.com</span>
+                <span>☎ +242 06 567 09 56</span>
+            </div>
+            <div class="top-bar-social">
+               <i class="fab fa-facebook-f"></i>
+               <i class="fab fa-twitter"></i>
+               <i class="fab fa-google-plus-g"></i>  
+               <i class="fab fa-linkedin-in"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="main-nav">
+            <div class="logo-container">
+                <h1>WASSY</h1>
+                <p>ND Design d'Intérieur</p>    
+            </div>
+            <div class="mobile-toggle">☰</div>
+            <ul class="menu">
+                <li><a href="index.html">Accueil</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projets</a></li>
+                    <li><a href="galery.html">Galerie</a></li>
+                    <li><a href="equipe.html">Notre Équipe</a></li>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+            </ul>
+        </nav>
+    </header>
+
+     <!-- Contact Page Content -->
+    <div id="contact" class="page-section container">
+        <h1 class="page-title">CONTACT US</h1>
+        
+        <div class="two-column">
+        <div class="contact-form-container">
+
+       <form class="contact-form" id="contactForm" novalidate>
+                <div class="form-row">
+                    <input type="text" name="nom" id="nom" placeholder="Nom" required minlength="2" maxlength="50" pattern="[A-Za-zÀ-ÿ\s'-]+" title="Le nom ne doit contenir que des lettres.">
+                    <span class="error-message" id="error-nom"></span>
+                </div>
+
+                <div class="form-row">
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <span class="error-message" id="error-email"></span>
+                </div>
+
+                <div class="form-row">
+                    <input type="tel" name="telephone" id="telephone" placeholder="Téléphone" required pattern="^\+?[0-9\s\-]{7,20}$">
+                    <span class="error-message" id="error-telephone"></span>
+                </div>
+
+                <div class="form-row">
+                    <input type="url" name="website" id="website" placeholder="Site web (ex: http://...)"
+                        pattern="https?://.+" title="Veuillez saisir une URL valide avec http:// ou https://">
+                    <span class="error-message" id="error-website"></span>
+                </div>
+
+                <div class="form-row">
+                    <textarea name="message" id="message" placeholder="Votre message" required minlength="10" maxlength="1000"></textarea>
+                    <span class="error-message" id="error-message"></span>
+                </div>
+
+                <div class="form-row">
+                    <button type="submit" class="btn" id="submitBtn">ENVOYER</button>
+                </div>
+         </form>
+     </div>
+            
+            <div class="contact-info">
+                <h3>Contact Info</h3>
+                <p>📍 11 RUE DE LA GLOIRE, BRAZZAVILLE</p>
+                <p>📞 +242 06 567 09 56</p>
+                <p>✉ wassydeco@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+     <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h3>À PROPOS DE NOUS</h3>
+                <p>Notre entreprise de design d'intérieur s'engage à créer des espaces qui inspirent. Avec une équipe de professionnels passionnés, nous transformons vos rêves en réalité.</p>
+                <p>Chaque projet est une nouvelle aventure où nous combinons créativité, fonctionnalité et élégance pour créer des intérieurs qui vous ressemblent.</p>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>DERNIERS ARTICLES</h3>
+                <div class="latest-post">
+                    <h4>Les tendances déco de 2025</h4>
+                    <p>Découvrez les nouvelles tendances qui façonnent...</p>
+                </div>
+                <div class="latest-post">
+                    <h4>Comment optimiser les petits espaces</h4>
+                    <p>Astuces et conseils pour tirer le meilleur parti...</p>
+                </div>
+            </div>
+            
+            <div class="footer-widget">
+                <h3>CONTACTEZ-NOUS</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 11 RUE DE LA GLOIRE, BRAZZAVILLE</p>
+                <p><i class="fas fa-phone"></i> +242 06 567 09 56 </p>
+                <p><i class="far fa-envelope"></i> wassydeco@gmail.com</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+                <div class="footer-widget">
+                <h3>MENU PIED DE PAGE</h3>
+                <ul class="footer-menu">
+                  <li><a href="index.html">Accueil</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projets</a></li>
+                    <li><a href="galery.html">Galerie</a></li>
+                    <li><a href="equipe.html">Notre Équipe</a></li>
+                    <li><a href="contact.html">Contactez-nous</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>Copyright © 2023. All rights reserved</p>
+            <p>Design by Grace Themes</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="back-to-top">↑</a>   
+
+     <script>
+        // Code pour gérer le menu mobile
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const menu = document.querySelector('.menu');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', function() {
+                    menu.classList.toggle('active');
+                    this.innerHTML = menu.classList.contains('active') ? '✕' : '☰';
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const fields = ['nom', 'email', 'telephone', 'website', 'message'];
+
+            fields.forEach(field => {
+                const input = document.getElementById(field);
+                const error = document.getElementById(`error-${field}`);
+
+                input.addEventListener('blur', () => validateField(input, error));
+                input.addEventListener('input', () => error.textContent = '');
+            });
+
+            function validateField(input, errorSpan) {
+                if (!input.checkValidity()) {
+                    if (input.validity.valueMissing) {
+                        errorSpan.textContent = 'Ce champ est requis.';
+                    } else if (input.validity.typeMismatch) {
+                        errorSpan.textContent = `Format invalide pour ${input.name}.`;
+                    } else if (input.validity.patternMismatch) {
+                        errorSpan.textContent = `Le format de ${input.name} est incorrect.`;
+                    } else if (input.validity.tooShort) {
+                        errorSpan.textContent = `Le texte est trop court (min ${input.minLength} caractères).`;
+                    } else if (input.validity.tooLong) {
+                        errorSpan.textContent = `Le texte est trop long (max ${input.maxLength} caractères).`;
+                    } else {
+                        errorSpan.textContent = 'Valeur non valide.';
+                    }
+                } else {
+                    errorSpan.textContent = '';
+                }
+            }
+
+            form.addEventListener('submit', function (e) {
+                let hasErrors = false;
+                fields.forEach(field => {
+                    const input = document.getElementById(field);
+                    const error = document.getElementById(`error-${field}`);
+                    validateField(input, error);
+                    if (!input.checkValidity()) hasErrors = true;
+                });
+
+                if (hasErrors) {
+                    e.preventDefault();
+                    return;
+                }
+
+                // Simulation de soumission
+                e.preventDefault(); // À retirer si vous avez un backend réel
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Envoi en cours...';
+
+                setTimeout(() => {
+                // Changement de texte et style du bouton
+                submitBtn.textContent = 'Envoyé !';
+                submitBtn.style.backgroundColor = '#28a745';
+
+                // Réinitialiser le formulaire après succès
+                form.reset();
+
+                // Réinitialiser les messages d’erreur
+                fields.forEach(field => {
+                    const error = document.getElementById(`error-${field}`);
+                    error.textContent = '';
+                });
+
+                // Réactiver le bouton après quelques secondes si tu veux refaire une soumission
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'ENVOYER';
+                    submitBtn.style.backgroundColor = '#000';
+                }, 3000);
+                    }, 2000);
+            });
+        });
+
+    </script>
+
+   
