@@ -260,6 +260,82 @@
                 grid-template-columns: 1fr;
             }
         }
+
+         /* Ajouts spécifiques pour la galerie */
+        .gallery-item {
+            cursor: zoom-in;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-item::after {
+            content: '+';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+        
+        /* Styles pour l'overlay */
+        .image-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            cursor: zoom-out;
+        }
+        
+        .image-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -463,6 +539,63 @@
     <a href="#" class="back-to-top">↑</a>
 
     <script>
+
+        // Version optimisée sans jQuery
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Récupère l'URL de l'image depuis le background-image
+                const bgImage = window.getComputedStyle(this).backgroundImage;
+                if (bgImage && bgImage !== 'none') {
+                    const imgUrl = bgImage.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+                    
+                    // Crée l'overlay
+                    const overlay = document.createElement('div');
+                    overlay.className = 'image-overlay';
+                    
+                    // Crée l'élément image
+                    const img = new Image();
+                    img.src = imgUrl;
+                    img.onload = function() {
+                        // Ajuste la taille pour les petites images
+                        if (this.naturalWidth < 800 || this.naturalHeight < 600) {
+                            const scaleFactor = Math.min(
+                                800 / this.naturalWidth,
+                                600 / this.naturalHeight
+                            );
+                            img.style.width = (this.naturalWidth * scaleFactor) + 'px';
+                        }
+                    };
+                    
+                    // Bouton de fermeture
+                    const closeBtn = document.createElement('div');
+                    closeBtn.className = 'close-btn';
+                    closeBtn.innerHTML = '&times;';
+                    closeBtn.addEventListener('click', () => overlay.remove());
+                    
+                    // Ajout des éléments au DOM
+                    overlay.appendChild(img);
+                    overlay.appendChild(closeBtn);
+                    document.body.appendChild(overlay);
+                    
+                    // Ferme l'overlay en cliquant à l'extérieur de l'image
+                    overlay.addEventListener('click', (e) => {
+                        if (e.target === overlay) {
+                            overlay.remove();
+                        }
+                    });
+                    
+                    // Ferme avec la touche ESC
+                    document.addEventListener('keydown', function escClose(e) {
+                        if (e.key === 'Escape') {
+                            overlay.remove();
+                            document.removeEventListener('keydown', escClose);
+                        }
+                    });
+                }
+            });
+        });
+
+        
         // Script pour le menu mobile
         document.querySelector('.mobile-toggle').addEventListener('click', function() {
             document.querySelector('.menu').classList.toggle('active');
